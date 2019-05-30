@@ -1,0 +1,46 @@
+﻿<h1>Registration:</h1>
+<form action="~/Home/Register">
+    <table id="registerTable">
+        <tr>
+            <td>
+                <p>Username:</p>
+            </td>
+            <td>
+                <input type="text" name="UserName" />
+            </td>
+            <td>
+                @Session["UsernameError"]
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Password:</p>
+            </td>
+            <td>
+                <input type="password" name="Pass" />
+            </td>
+            <td>
+                @Session["PassError"]
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>How much money you got?</p>
+            </td>
+            <td>
+                <input type="number" step="any" name="Cash" />
+            </td>
+            <td>
+                @Session["CashError"]
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <input type="submit" />
+            </td>
+        </tr>
+    </table>
+</form>

@@ -1,0 +1,52 @@
+﻿@using Lab23.Models
+@{ 
+    User user = (User)Session["User"];
+}
+
+    
+<h1>Welcome to the ol shop!</h1> 
+
+@{ 
+    if (user == null)
+    {
+    <form action="~/Home/Login" method="post">
+        <table id="registerTable">
+            <tr>
+                <td>
+                    <p>Username:</p>
+                </td>
+                <td>
+                    <input type="text" name="UserName" />
+                </td>
+                <td>
+                    @Session["LoginUsernameError"]
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Password:</p>
+                </td>
+                <td>
+                    <input type="password" name="Pass" />
+                </td>
+                <td>
+                    @Session["LoginPassError"]
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.ActionLink("Register", "Registeration", "Home")
+                </td>
+                <td>
+                    <input type="submit" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    }
+    else
+    {
+        <h1>Welcome @user.UserName!</h1>
+
+    }
+    }

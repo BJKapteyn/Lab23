@@ -1,0 +1,69 @@
+﻿@using Lab23.Models
+@{ 
+    User u = (User)Session["User"];
+}
+@{ 
+    if (u != null)
+    {
+        <h2>Welcome to the Couch Shop!</h2><br />
+        <h3>Your remaining funds: $@u.Cash</h3><br />
+        ShopDBEntities1 shop = new ShopDBEntities1();
+        List<Item> shopItems = shop.Items.ToList();
+        <table>
+            <tr>
+                <th>
+                    <p>Item</p>
+                </th>
+                <th>
+                    <p>Description</p>
+                </th>
+                <th>
+                    <p>Price</p>
+                </th>
+                <th>
+                    <p>Remaining</p>
+                </th>
+                <th>
+                    <p>Purchase</p>
+                </th>
+            </tr>
+              @for(int i = 0; i < shopItems.Count; i++)
+              {
+                  <tr>
+                      <td>
+                          <p>@shopItems[i].Name</p>
+                      </td>
+                      <td>
+                          <p>@shopItems[i].Description</p>
+                      </td>
+                      <td>
+                          <p>@shopItems[i].Price</p>
+                      </td>
+                      <td>
+                          <p>@shopItems[i].Quantity</p>
+                      </td>
+                      <td>
+                          @if (shopItems[i].Quantity == 0)
+                          {
+                              <p>Out of Stock</p>
+                          }
+                          else
+                          {
+                              <form action="~/Home/Purchase" method="post">
+                                  <input name="userId" value="@u.id" class="hidden" />
+                                  <input name="id" value="@shopItems[i].id" class="hidden" />
+                                  <input type="submit" value="BUY" />
+                                  <input name="quantity" type="number" placeholder="Enter Quantity" />
+                              </form>
+                          }
+                      </td>
+                  </tr>
+              }
+        </table>
+
+    }
+    else
+    {
+        <a href="~/Home/Index">You better get on back home and log in before I tell!</a>
+    }
+}
