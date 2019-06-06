@@ -94,25 +94,35 @@ namespace Lab23.Controllers
 
         public ActionResult Purchase(int id, int quantity, int userId)
         {
-            if (quantity != null)
+            if (quantity > 0)
             {
+                UserItem purchased = new UserItem();
+                purchased.ItemID = id;
+                purchased.UserID = userId;
+                for(int i = 0; i < quantity; i++)
+                {
+                    UserItem Copy = new UserItem();
+                    Copy.ItemID = purchased.ItemID;
+                    Copy.UserID = purchased.UserID;
+                    db.UserItems.Add(Copy);
+                }
                 Item item = db.Items.Find(id);
                 User u = db.Users.Find(userId);
                 double price = (double)item.Price * quantity;
+
                 if (item.Quantity > quantity)
                 {
                     Session["QuantityError"] = "";
                     item.Quantity -= quantity;
-                    db.SaveChanges();
                 }
                 else
                 {
                     Session["QuantityError"] = "Not enough in stock sorry";
                 }
+
                 if (u.Cash > price)
                 {
                     u.Cash -= price;
-                    db.SaveChanges();
                     Session["User"] = u;
                 }
                 else
@@ -124,7 +134,12 @@ namespace Lab23.Controllers
             {
                 Session["QuantityError"] = "Gotta enter a quantity";
             }
+            db.SaveChanges();
             return RedirectToAction("Shop");
+        }
+        public ActionResult Cart()
+        {
+            return View();
         }
     }
 }

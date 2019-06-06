@@ -10,6 +10,14 @@
     <Property Name="Quantity" Type="int" />
     <Property Name="Price" Type="float" />
   </EntityType>
+  <EntityType Name="UserItems">
+    <Key>
+      <PropertyRef Name="UserItemID" />
+    </Key>
+    <Property Name="UserItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="ItemID" Type="int" />
+  </EntityType>
   <EntityType Name="Users">
     <Key>
       <PropertyRef Name="id" />
@@ -19,8 +27,41 @@
     <Property Name="Pass" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="Cash" Type="float" />
   </EntityType>
+  <Association Name="FK__UserItems__ItemI__46E78A0C">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="UserItems" Type="Self.UserItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="UserItems">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserItems__ItemI__47DBAE45">
+    <End Role="Items" Type="Self.Items" Multiplicity="0..1" />
+    <End Role="UserItems" Type="Self.UserItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="UserItems">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ShopDBModelStoreContainer">
     <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserItems" EntityType="Self.UserItems" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__UserItems__ItemI__46E78A0C" Association="Self.FK__UserItems__ItemI__46E78A0C">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserItems" EntitySet="UserItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserItems__ItemI__47DBAE45" Association="Self.FK__UserItems__ItemI__47DBAE45">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="UserItems" EntitySet="UserItems" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

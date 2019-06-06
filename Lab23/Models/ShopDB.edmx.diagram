@@ -6,8 +6,11 @@
     <edmx:Diagrams>
       <Diagram DiagramId="c11fbec7cc3148a692660d31a6eba415" Name="Diagram1">
         <EntityTypeShape EntityType="ShopDBModel.Item" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShopDBModel.User" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-      </Diagram>
+        <EntityTypeShape EntityType="ShopDBModel.User" Width="1.5" PointX="3.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopDBModel.UserItem" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="ShopDBModel.FK__UserItems__ItemI__47DBAE45" />
+        <AssociationConnector Association="ShopDBModel.FK__UserItems__ItemI__46E78A0C" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

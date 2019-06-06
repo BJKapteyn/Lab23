@@ -77,7 +77,6 @@ D:\C#\Labs\Lab23\Lab23\bin\Antlr3.Runtime.pdb
 D:\C#\Labs\Lab23\Lab23\bin\System.Diagnostics.DiagnosticSource.xml
 D:\C#\Labs\Lab23\Lab23\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 D:\C#\Labs\Lab23\Lab23\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\C#\Labs\Lab23\Lab23\obj\Debug\Lab23.csprojAssemblyReference.cache
 D:\C#\Labs\Lab23\Lab23\obj\Debug\Lab23.csproj.CoreCompileInputs.cache
 D:\C#\Labs\Lab23\Lab23\obj\Debug\Lab23.csproj.CopyComplete
 D:\C#\Labs\Lab23\Lab23\obj\Debug\Lab23.dll
